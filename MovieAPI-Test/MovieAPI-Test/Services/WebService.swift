@@ -29,5 +29,24 @@ class Webservice{
         
         
     }
+    func filmleriDetayliIndir(url : URL , completion : @escaping (Movie?) -> ()){
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error  = error{
+                print(error.localizedDescription)
+                completion(nil)
+            } else if let  data = data{
+                let filmlerDizisi = try? JSONDecoder().decode(Movie.self, from: data) //hangi sınıftan yapacagımızı sordugu ıcın self diyoruz.
+                
+                if let filmlerDizisi = filmlerDizisi{
+                    completion(filmlerDizisi)
+                    
+                }
+                
+            }
+        }.resume() // başlatmak ıcın kullanıcaz
+        
+        
+    }
     
 }

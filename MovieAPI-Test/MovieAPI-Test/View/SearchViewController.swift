@@ -16,6 +16,8 @@ class SearchViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     @IBOutlet weak var searchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Search Movies"
+        
         searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
@@ -38,6 +40,24 @@ class SearchViewController: UIViewController ,UITableViewDelegate,UITableViewDat
               
            }
        }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMovie = self.moviesTableViewModel.newsAtIndexPath(indexPath.row)
+        print("\(selectedMovie.imdbID)")
+        let imdbID  = selectedMovie.imdbID
+      
+        //segue baslangıcı
+        performSegue(withIdentifier: "showMovieDetailSegue",sender: imdbID )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieDetailSegue"{
+            let destinationVC = segue.destination as! MovieDetailViewController
+            if let imdbID = sender as? String{
+                destinationVC.imdbID = imdbID
+               
+            }
+        }
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesTableViewModel == nil ? 0 : moviesTableViewModel.numberofRowsInSection() // boş gelirse diye

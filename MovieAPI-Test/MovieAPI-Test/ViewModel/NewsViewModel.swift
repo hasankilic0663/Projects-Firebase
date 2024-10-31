@@ -36,13 +36,20 @@ struct MoviesViewModel {
     let movies: Movie
     
     var title: String {
-        return self.movies.title
+        return self.movies.title ?? "N/A"
     }
     
     var year: String {
-        return self.movies.year
+        return self.movies.year ?? "N/A"
     }
     var poster: String {
-           return movies.poster
+        return movies.poster ?? "N/A"
        }
+    
+    var imdbID: String {
+        return movies.imdbID ?? "N/A"
+       }
+    var director: String {
+        return movies.director ?? "N/A"
+    }
 }

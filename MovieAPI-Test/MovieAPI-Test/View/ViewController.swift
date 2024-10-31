@@ -9,8 +9,7 @@ import UIKit
 
 class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSource {
   
-    
-    
+ 
     @IBOutlet weak var tableView: UITableView!
     
     private var moviesTableViewModel: MoviesTableViewModel!
@@ -18,7 +17,7 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
         override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-            self.title = "Movies"
+           
         tableView.dataSource = self
         tableView.delegate = self
 //            tableView.rowHeight = UITableView.automaticDimension
@@ -49,6 +48,24 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedMovie = self.moviesTableViewModel.newsAtIndexPath(indexPath.row)
+        print("\(selectedMovie.imdbID)")
+        let imdbID  = selectedMovie.imdbID
+      
+        //segue baslangıcı
+        performSegue(withIdentifier: "showMovieDetail",sender: imdbID )
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showMovieDetail"{
+            let destinationVC = segue.destination as! MovieDetailViewController
+            if let imdbID = sender as? String{
+                destinationVC.imdbID = imdbID
+               
+            }
+        }
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
