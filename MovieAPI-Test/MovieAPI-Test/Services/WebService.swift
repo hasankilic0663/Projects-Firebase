@@ -10,7 +10,7 @@ import Foundation
 
 class Webservice{
     
-    func haberleriIndir(url : URL , completion : @escaping ([Movie]?) -> ()){
+    func filmleriIndir(url : URL , completion : @escaping ([Movie]?) -> ()){
         
         URLSession.shared.dataTask(with: url) { data, response, error in
             if let error  = error{

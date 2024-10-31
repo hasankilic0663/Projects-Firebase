@@ -35,7 +35,7 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
     func veriAl(){
         let url = URL(string: "https://www.omdbapi.com/?s=movie&apikey=2f14edc2")
    
-        Webservice().haberleriIndir(url: url!) { haberler in
+        Webservice().filmleriIndir(url: url!) { haberler in
             if let haberler = haberler {
                print("\(haberler) slşkdfşslad")
                 
@@ -74,11 +74,18 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
         return UITableViewCell()
     }
     
+    
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { // otomatık yukseklık ıcın
         return 300
     }
-//    
-    func loadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
+//
+    
+    
+    
+    
+     func loadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
         guard let url = URL(string: url) else {
             completion(nil)
             return

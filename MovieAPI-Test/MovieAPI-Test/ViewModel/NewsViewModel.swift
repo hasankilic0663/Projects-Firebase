@@ -9,9 +9,14 @@ import Foundation
 
 
 struct MoviesTableViewModel {
-    let newsList: [Movie]
+    var newsList: [Movie]
     
     
+}
+extension MoviesTableViewModel {
+    mutating func clearResults() {
+        newsList.removeAll()
+    }
 }
 
 extension MoviesTableViewModel {
