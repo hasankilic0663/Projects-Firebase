@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
+        <!--Favori Ekran -->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MovieAPI_Test" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Favori Ekran " id="BYZ-38-t0r" customClass="ViewController" customModule="MovieAPI_Test" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,16 +25,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle.fill" catalog="system" id="8te-hh-PWz">
-                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
+                    <navigationItem key="navigationItem" id="mcL-mp-x25"/>
                     <connections>
                         <outlet property="tableView" destination="yKt-3d-TQk" id="Ocl-VU-1Nh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="541" y="-56"/>
+            <point key="canvasLocation" x="1466.4122137404579" y="-56.338028169014088"/>
         </scene>
         <!--Item 2-->
         <scene sceneID="ilZ-oF-zaZ">
@@ -63,12 +61,33 @@
                     </tabBar>
                     <connections>
                         <segue destination="ghy-lG-oxq" kind="relationship" relationship="viewControllers" id="vbZ-9d-EbV"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="DTv-UD-p7v"/>
+                        <segue destination="5cx-Ef-o2J" kind="relationship" relationship="viewControllers" id="DTv-UD-p7v"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fmh-1m-FdL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1246" y="342"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="rBm-P3-i8A">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5cx-Ef-o2J" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle.fill" catalog="system" id="8te-hh-PWz">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MEb-To-Klx">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Sx1-cX-Xuh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m1V-AA-c00" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="539.69465648854964" y="-56.338028169014088"/>
         </scene>
     </scenes>
     <resources>

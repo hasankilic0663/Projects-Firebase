@@ -18,7 +18,7 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
         override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+            self.title = "Movies"
         tableView.dataSource = self
         tableView.delegate = self
 //            tableView.rowHeight = UITableView.automaticDimension
