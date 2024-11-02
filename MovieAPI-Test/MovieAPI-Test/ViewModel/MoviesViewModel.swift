@@ -9,23 +9,23 @@ import Foundation
 
 
 struct MoviesTableViewModel {
-    var newsList: [Movie]
+    var moviesList: [Movie]
     
     
 }
 extension MoviesTableViewModel {
     mutating func clearResults() {
-        newsList.removeAll()
+        moviesList.removeAll()
     }
 }
 
 extension MoviesTableViewModel {
     func numberofRowsInSection() -> Int {
-        return self.newsList.count
+        return self.moviesList.count
     }
     
     func newsAtIndexPath(_ index: Int) -> MoviesViewModel {
-        let movies = self.newsList[index]
+        let movies = self.moviesList[index]
         return MoviesViewModel(movies: movies)
         
     }

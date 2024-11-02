@@ -42,6 +42,7 @@ class Webservice{
                     completion(filmlerDizisi)
                     
                 }
+               // completion(filmlerDizisi)
                 
             }
         }.resume() // başlatmak ıcın kullanıcaz

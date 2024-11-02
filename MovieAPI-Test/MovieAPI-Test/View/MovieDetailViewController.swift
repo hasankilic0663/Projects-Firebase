@@ -17,6 +17,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var directorLabel: UILabel!
     @IBOutlet weak var runTimeLabel: UILabel!
     
+    @IBOutlet weak var starLabel: UILabel!
+    @IBOutlet weak var plotLabel: UILabel!
     @IBOutlet weak var writerLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
@@ -36,7 +38,7 @@ class MovieDetailViewController: UIViewController {
         let url = URL(string: "https://www.omdbapi.com/?apikey=2f14edc2&i=\(imdbID)")
    
         Webservice().filmleriDetayliIndir(url: url!) { filmler in
-            DispatchQueue.main.async {
+           DispatchQueue.main.async {
                 if let filmler = filmler {
                     print("\(filmler) slşkdfşslad")
                     
@@ -46,8 +48,8 @@ class MovieDetailViewController: UIViewController {
                     self.writerLabel.text = filmler.writer
                     self.titleLabel.text = filmler.title
                     self.directorLabel.text = filmler.director
-                    
-                    
+                    self.plotLabel.text = filmler.plot
+                    self.starLabel.text = filmler.imdbRating
                     
                     if let posterURL = filmler.poster, let url = URL(string: posterURL) {
                                        self.loadImage(from: url)
@@ -64,6 +66,10 @@ class MovieDetailViewController: UIViewController {
             if let data = data, let image = UIImage(data: data) {
                 DispatchQueue.main.async {
                     self.imageView.image = image
+                }
+            }else {
+                DispatchQueue.main.async {
+                    self.imageView.image = UIImage(named: "defaultPoster") // Yüklenemeyen posterler için varsayılan resim
                 }
             }
         }.resume()

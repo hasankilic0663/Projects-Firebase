@@ -17,7 +17,8 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
         override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-           
+            self.view.backgroundColor = .black
+            
         tableView.dataSource = self
         tableView.delegate = self
 //            tableView.rowHeight = UITableView.automaticDimension
@@ -34,11 +35,11 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
     func veriAl(){
         let url = URL(string: "https://www.omdbapi.com/?s=movie&apikey=2f14edc2")
    
-        Webservice().filmleriIndir(url: url!) { haberler in
-            if let haberler = haberler {
-               print("\(haberler) slşkdfşslad")
+        Webservice().filmleriIndir(url: url!) { filmler in
+            if let filmler = filmler {
+               print("\(filmler) slşkdfşslad")
                 
-                self.moviesTableViewModel = MoviesTableViewModel(newsList: haberler)
+                self.moviesTableViewModel = MoviesTableViewModel(moviesList: filmler)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -95,7 +96,7 @@ class ViewController: UIViewController , UITableViewDelegate , UITableViewDataSo
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { // otomatık yukseklık ıcın
-        return 300
+        return 250
     }
 //
     

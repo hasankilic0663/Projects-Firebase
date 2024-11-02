@@ -17,7 +17,7 @@ class SearchViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Search Movies"
-        
+        self.view.backgroundColor = .black
         searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
@@ -88,7 +88,7 @@ class SearchViewController: UIViewController ,UITableViewDelegate,UITableViewDat
             if let filmler = filmler {
                print("\(filmler) slşkdfşslad")
                 
-                self.moviesTableViewModel = MoviesTableViewModel(newsList: filmler)
+                self.moviesTableViewModel = MoviesTableViewModel(moviesList: filmler)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
@@ -99,7 +99,7 @@ class SearchViewController: UIViewController ,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { // otomatık yukseklık ıcın
-        return 200
+        return 180
     }
 //
     func loadImage(from url: String, completion: @escaping (UIImage?) -> Void) {
