@@ -14,6 +14,29 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+                
+                .font(.largeTitle)
+                .foregroundStyle(.tint)
+                .padding()
+            HStack {
+                Text("SwiftUI")
+                    .font(.headline)
+                    .foregroundStyle(.black)
+                Text("by Yillarson")
+                    .font(.caption)
+                    .foregroundStyle(.black)
+                    .padding(.horizontal, 10)
+                    .overlay {
+                       
+                        ZStack {
+                            Rectangle()
+                                .stroke()
+                            
+                            Rectangle()
+                                .stroke(style: StrokeStyle(lineWidth: 10, color: .black))
+                        }
+                    }
+            }
         }
         .padding()
     }

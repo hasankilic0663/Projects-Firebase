@@ -72,6 +72,15 @@ class ViewController: UIViewController , UITextFieldDelegate{
         
     }
     
+    
+    
+    
+    @IBAction func sonrakiSayfa(_ sender: Any) {
+        performSegue(withIdentifier: "toDetailsVC", sender: nil)
+        
+        
+        
+    }
     private func validateDateOfBirth(_ selectedDate: Date) {
            let calendar = Calendar.current
            let currentDate = Date()
