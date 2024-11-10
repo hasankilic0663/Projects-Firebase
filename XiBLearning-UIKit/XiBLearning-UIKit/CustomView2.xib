@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomView2" customModule="XiBLearning_UIKit" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="90"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" TC Kimlik Numaranız" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkd-dE-Oaq">
+                    <rect key="frame" x="8" y="12" width="129" height="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tc Kimlik Numaranızı Giriniz" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tJv-s2-lYa">
+                    <rect key="frame" x="11" y="30" width="227" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="errorlabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1w-PV-xAE">
+                    <rect key="frame" x="26.999999999999996" y="49" width="54.666666666666657" height="14.333333333333336"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" systemColor="systemRedColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="a1w-PV-xAE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="11" id="3sb-jg-kOk"/>
+                <constraint firstItem="tJv-s2-lYa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="11" id="4o8-dR-eJJ"/>
+                <constraint firstItem="tJv-s2-lYa" firstAttribute="top" secondItem="Lkd-dE-Oaq" secondAttribute="bottom" constant="2" id="M9O-Ub-Klh"/>
+                <constraint firstAttribute="trailing" secondItem="tJv-s2-lYa" secondAttribute="trailing" constant="93" id="axl-m7-xbr"/>
+                <constraint firstItem="Lkd-dE-Oaq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="d8Z-Fz-4z0"/>
+                <constraint firstItem="a1w-PV-xAE" firstAttribute="top" secondItem="tJv-s2-lYa" secondAttribute="bottom" constant="2" id="weB-xi-xNL"/>
+                <constraint firstItem="Lkd-dE-Oaq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="xz8-PD-FeP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-25.190839694656489" y="-3.1690140845070425"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

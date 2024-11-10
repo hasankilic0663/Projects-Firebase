@@ -9,11 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var view1: CustomView2!
+    
+    @IBOutlet weak var view3: CustomView2!
+    @IBOutlet weak var view2: CustomView2!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        view1 = loadViewFromNib(nibName: "CustomView2") as? CustomView2
+        view2 = loadViewFromNib(nibName: "CustomView2") as? CustomView2
+        view3 = loadViewFromNib(nibName: "CustomView2") as? CustomView2
+        
     }
 
+    
 
 }
 
