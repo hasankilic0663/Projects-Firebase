@@ -23,10 +23,10 @@ final class CustomView2: UIView {
     }
     
     private func configureView() {
-//        guard let view = self.loadViewFromNib(nibName: "CustomView2")
-//                else { return }
-//        view.frame = self.bounds
-//        self.addSubview(view)
+        guard let view = self.loadViewFromNib(nibName: "CustomView2")
+                else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
         
         // Çerçeve için özellikler
         self.layer.borderColor = UIColor.systemGray3.cgColor

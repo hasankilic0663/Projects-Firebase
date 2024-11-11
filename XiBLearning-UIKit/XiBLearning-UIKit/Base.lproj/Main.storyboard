@@ -17,24 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="t95-M0-2Zv">
-                                <rect key="frame" x="16" y="75" width="361" height="274"/>
+                                <rect key="frame" x="16" y="75" width="361" height="205"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SyW-Lc-fer" customClass="CustomView2" customModule="XiBLearning_UIKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="361" height="90"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="67"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kbw-3y-t5v" customClass="CustomView2" customModule="XiBLearning_UIKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="361" height="90"/>
+                                        <rect key="frame" x="0.0" y="69" width="361" height="67"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tjq-nT-xHx" customClass="CustomView2" customModule="XiBLearning_UIKit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="184" width="361" height="90"/>
+                                        <rect key="frame" x="0.0" y="138" width="361" height="67"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="67" id="CgR-qd-cJE"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="274" id="PJf-w4-1wa"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJL-un-QZr" customClass="CustomView2" customModule="XiBLearning_UIKit" customModuleProvider="target">
                                 <rect key="frame" x="35" y="579" width="328" height="50"/>
