@@ -10,11 +10,15 @@ import UIKit
 @IBDesignable
 final class CustomView2: UIView {
 
+    @IBOutlet weak var borderView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet  var denemeTextField: UITextField!
     @IBOutlet var denemeLabel: UILabel!
     override  init(frame: CGRect) {
         super .init(frame: frame)
         self.configureView()
+    
+        
     }
     
     required init? (coder: NSCoder) {
@@ -22,24 +26,60 @@ final class CustomView2: UIView {
         self.configureView()
     }
     
+    
+    
+    
     private func configureView() {
         guard let view = self.loadViewFromNib(nibName: "CustomView2")
                 else { return }
         view.frame = self.bounds
         self.addSubview(view)
         
-        // Çerçeve için özellikler
-        self.layer.borderColor = UIColor.systemGray3.cgColor
-          self.layer.borderWidth = 1
-          self.layer.cornerRadius = 4
-          self.layer.masksToBounds = true
+        
+        borderView.layer.borderColor = UIColor.systemGray3.cgColor
+        borderView.layer.borderWidth = 1
+        borderView.layer.cornerRadius = 4
+        borderView.layer.masksToBounds = true
+        errorLabel.isHidden = true
     }
    
     
-    func configureView(title : String){
+    func configureView(title : String,placeholder : String,errorLabel : String){
         self.denemeLabel.text = title
+        self.denemeTextField.placeholder = placeholder
+        self.errorLabel.text = errorLabel
      
     }
+    
+  
+       
+       func validateTextField(_ textField: UITextField, errorLabel: UILabel, errorMessage: String) {
+           // Check if the text field is empty
+           if textField.text?.isEmpty ?? true {
+               errorLabel.isHidden = false
+               errorLabel.text = errorMessage
+               borderView.layer.borderColor = UIColor.red.cgColor
+               borderView.layer.borderWidth = 1
+               borderView.layer.cornerRadius = 4
+               borderView.layer.masksToBounds = true
+               denemeTextField.attributedPlaceholder = NSAttributedString(
+                    string: denemeTextField.placeholder ?? "",
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+                )
+               
+           } else {
+               errorLabel.isHidden = true
+             
+               borderView.layer.borderColor = UIColor.systemGray3.cgColor
+               borderView.layer.borderWidth = 1
+               borderView.layer.cornerRadius = 4
+               borderView.layer.masksToBounds = true
+               denemeTextField.attributedPlaceholder = NSAttributedString(
+                    string: denemeTextField.placeholder ?? "",
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+                )
+           }
+       }
     
 
 }

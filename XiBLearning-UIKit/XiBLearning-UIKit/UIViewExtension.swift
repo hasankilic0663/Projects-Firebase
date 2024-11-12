@@ -5,8 +5,7 @@
 //  Created by Hasan Hüseyin Kılıç on 8.11.2024.
 //
 
-import Foundation
-import UIKit
+import UIKit.UIView
 
 extension UIView {
     func loadViewFromNib(nibName: String) -> UIView? {
