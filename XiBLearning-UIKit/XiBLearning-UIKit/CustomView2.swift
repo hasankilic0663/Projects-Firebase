@@ -14,6 +14,25 @@ final class CustomView2: UIView {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet  var denemeTextField: UITextField!
     @IBOutlet var denemeLabel: UILabel!
+    
+    @IBInspectable var title: String? {
+          didSet {
+              denemeLabel.text = title
+          }
+      }
+      
+      @IBInspectable var placeholder: String? {
+          didSet {
+              denemeTextField.placeholder = placeholder
+          }
+      }
+      
+      @IBInspectable var errorMessage: String? {
+          didSet {
+              errorLabel.text = errorMessage
+          }
+      }
+    
     override  init(frame: CGRect) {
         super .init(frame: frame)
         self.configureView()
@@ -26,7 +45,10 @@ final class CustomView2: UIView {
         self.configureView()
     }
     
-    
+    override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        configureView()
+    }
     
     
     private func configureView() {
