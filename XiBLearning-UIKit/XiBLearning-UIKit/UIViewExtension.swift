@@ -6,7 +6,7 @@
 //
 
 import UIKit.UIView
-
+@IBDesignable 
 extension UIView {
     func loadViewFromNib(nibName: String) -> UIView? {
         let bundle = Bundle(for: type(of: self))

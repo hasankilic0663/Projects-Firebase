@@ -8,6 +8,7 @@
 import UIKit
 
 @IBDesignable
+
 final class CustomView2: UIView {
 
     @IBOutlet weak var borderView: UIView!
@@ -16,22 +17,23 @@ final class CustomView2: UIView {
     @IBOutlet var denemeLabel: UILabel!
     
     @IBInspectable var title: String? {
-          didSet {
-              denemeLabel.text = title
-          }
-      }
-      
-      @IBInspectable var placeholder: String? {
-          didSet {
-              denemeTextField.placeholder = placeholder
-          }
-      }
-      
-      @IBInspectable var errorMessage: String? {
-          didSet {
-              errorLabel.text = errorMessage
-          }
-      }
+           didSet {
+               denemeLabel.text = title
+           }
+       }
+       
+       @IBInspectable var placeholder: String? {
+           didSet {
+               denemeTextField.placeholder = placeholder
+           }
+       }
+       
+       @IBInspectable var errorMessage: String? {
+           didSet {
+               errorLabel.text = errorMessage
+           }
+       }
+       
     
     override  init(frame: CGRect) {
         super .init(frame: frame)
@@ -66,7 +68,7 @@ final class CustomView2: UIView {
     }
    
     
-    func configureView(title : String,placeholder : String,errorLabel : String){
+    func configureView(title : String ,placeholder : String , errorLabel : String){
         self.denemeLabel.text = title
         self.denemeTextField.placeholder = placeholder
         self.errorLabel.text = errorLabel
