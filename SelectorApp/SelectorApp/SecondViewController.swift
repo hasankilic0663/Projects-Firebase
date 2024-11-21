@@ -57,7 +57,11 @@ class SecondViewController: UIViewController {
 //               self.view.addGestureRecognizer(screenTapGesture)
 // 
         birthDayTextField.isEnabled = false
+<<<<<<< HEAD
         
+=======
+       
+>>>>>>> aabf5834b5b820e957866a1c2f22aea334b7f9e8
     }
     
     @objc func openDatePicker(){
