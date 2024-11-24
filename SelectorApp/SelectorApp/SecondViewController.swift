@@ -7,17 +7,15 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tcErrorLabel: UILabel!
     @IBOutlet weak var nameErrorLabel: UILabel!
     @IBOutlet weak var surnameErrorLabel: UILabel!
     @IBOutlet weak var birthdayErrorLabel: UILabel!
-    @IBOutlet weak var emailErrorLabel: UILabel!
     
         @IBOutlet weak var checkboxErrlrLabel: UILabel!
     var isChecked = false
-    @IBOutlet weak var stackViewCheckbox: UIStackView!
     
     @IBOutlet weak var calendarImageView: UIImageView!
     @IBOutlet weak var selectedCheckboxButton: UIButton!
@@ -32,17 +30,16 @@ class SecondViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var surnameTextField: UITextField!
     @IBOutlet weak var birthDayTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var continueButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tcTextField.delegate = self
         // Do any additional setup after loading the view.
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .inline
         datePicker?.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
-        let imageViewBottom = calendarImageView.frame.origin.y
+
         datePicker.frame = CGRect(x: 100, y: surnameView.frame.maxY + 250 , width: self.view.frame.width - 180, height: 280)
                     self.view.addSubview(datePicker)
                 
@@ -63,6 +60,22 @@ class SecondViewController: UIViewController {
        
 >>>>>>> aabf5834b5b820e957866a1c2f22aea334b7f9e8
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            // Sadece rakamların girilmesini sağlayalım
+            let allowedCharacterSet = CharacterSet.decimalDigits
+            let characterSet = CharacterSet(charactersIn: string)
+            
+            // Eğer kullanıcı geçerli bir rakam giriyorsa devam et
+            if allowedCharacterSet.isSuperset(of: characterSet) {
+                // Karakter sayısı 11'i geçmesin
+                let currentText = textField.text ?? ""
+                let newLength = currentText.count + string.count - range.length
+                return newLength <= 11
+            } else {
+                return false // Geçerli olmayan bir karakter girildiğinde engelle
+            }
+        }
     
     @objc func openDatePicker(){
           // Takvimi animasyonlu şekilde göster
@@ -94,13 +107,6 @@ class SecondViewController: UIViewController {
         isChecked.toggle()
         selectedCheckboxButton.setImage(isChecked ? UIImage(systemName: "checkmark.square") : UIImage(systemName:  "checkmark.square.fill"), for: .normal)
         
-        if isChecked == true {
-            
-            checkboxErrlrLabel.isHidden = false
-        }else{
-            
-            checkboxErrlrLabel.isHidden = true
-        }
     }
     
 
@@ -108,8 +114,103 @@ class SecondViewController: UIViewController {
         validate()
     }
     
+    func isValidTC(_ tc: String) -> Bool {
+        // TC Kimlik numarasının uzunluğunu kontrol etme
+        guard tc.count == 11 else {
+            return false
+        }
+
+        // TC Kimlik numarasının sadece sayılardan oluşup oluşmadığını kontrol etme
+        guard tc.allSatisfy({ $0.isNumber }) else {
+            return false
+        }
+
+        // TC Kimlik numarasının ilk hanesinin 0 olmaması gerekiyor
+        guard let firstDigit = Int(String(tc.first!)), firstDigit != 0 else {
+            return false
+        }
+
+        // İlk 9 basamağı tek ve çift olarak ayırarak toplama
+        var sumOdd = 0
+        var sumEven = 0
+        for i in 0..<9 {
+            if let digit = Int(String(tc[tc.index(tc.startIndex, offsetBy: i)])) {
+                if i % 2 == 0 {
+                    sumOdd += digit
+                } else {
+                    sumEven += digit
+                }
+            }
+        }
+
+        // 10. basamağı hesaplamak
+        let tenthDigit = (7 * sumOdd - sumEven) % 10
+
+        // İlk 10 basamağın toplamını hesaplamak
+        var total = 0
+        for i in 0..<10 {
+            if let digit = Int(String(tc[tc.index(tc.startIndex, offsetBy: i)])) {
+                total += digit
+            }
+        }
+
+        // 11. basamağı hesaplamak
+        let eleventhDigit = total % 10
+
+        // 10. ve 11. basamakları kontrol etme
+        guard let tenth = Int(String(tc[tc.index(tc.startIndex, offsetBy: 9)])),
+              let eleventh = Int(String(tc[tc.index(tc.startIndex, offsetBy: 10)])) else {
+            return false
+        }
+
+        return tenth == tenthDigit && eleventh == eleventhDigit
+    }
+    
     func validate(){
-        ColorError(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "Lütfen TC Kimlik Numaranızı Giriniz")
+        guard let tc = tcTextField.text, tc.count == 11 else {
+                    // Eğer TC Kimlik numarası 11 haneli değilse, hata mesajı göster
+//                  tcErrorLabel.text = "TC Kimlik Numarası 11 haneli olmalı."
+//                   tcErrorLabel.isHidden = false
+//             ColorError(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "Lütfen TC Kimlik Numaranızı Giriniz")
+        if tcTextField.text?.isEmpty == true{
+            ColorError(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "Lütfen TC Kimlik Numaranızı Giriniz")
+           
+        }else{
+            ColorErrorr(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "TC Kimlik Numarası 11 haneli olmalı.")
+           
+        }
+            if isChecked == true {
+                
+                checkboxErrlrLabel.isHidden = false
+            }else{
+                
+                checkboxErrlrLabel.isHidden = true
+            }
+
+            
+            ColorError(textfiled: surnameTextField, uiView: surnameView, errorLabel: surnameErrorLabel, errormessage: "Lütfen Soyadınızı Giriniz")
+            ColorError(textfiled: nameTextField, uiView: nameView, errorLabel: nameErrorLabel, errormessage: "Unicode name is not valid")
+            ColorError(textfiled: birthDayTextField, uiView: birthdayUIView, errorLabel: birthdayErrorLabel, errormessage: "Lütfen Doğum Tarihinizi Giriniz")
+                    return
+                }
+
+                if !isValidTC(tc) {
+                    // Eğer geçerli bir TC Kimlik numarası değilse, hata mesajı göster
+                    ColorErrorr(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "Geçersiz TC Kimlik Numarası.")
+                } else {
+                    // Eğer geçerli bir TC Kimlik numarası ise, hata mesajını gizle
+                
+                    ColorNotError(textfiled: tcTextField, uiView: tcView, errorLabel: tcErrorLabel, errormessage: "")
+                    
+                }
+        if isChecked == true {
+            
+            checkboxErrlrLabel.isHidden = false
+        }else{
+            
+            checkboxErrlrLabel.isHidden = true
+        }
+
         ColorError(textfiled: surnameTextField, uiView: surnameView, errorLabel: surnameErrorLabel, errormessage: "Lütfen Soyadınızı Giriniz")
         ColorError(textfiled: nameTextField, uiView: nameView, errorLabel: nameErrorLabel, errormessage: "Unicode name is not valid")
         ColorError(textfiled: birthDayTextField, uiView: birthdayUIView, errorLabel: birthdayErrorLabel, errormessage: "Lütfen Doğum Tarihinizi Giriniz")
@@ -210,4 +311,33 @@ func ColorError(textfiled: UITextField , uiView: UIView! , errorLabel: UILabel, 
              attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
          )
     }
+}
+func ColorErrorr(textfiled: UITextField , uiView: UIView! , errorLabel: UILabel, errormessage: String/*,isConditionMet: Bool*/ ) {
+    
+        uiView.layer.borderColor = UIColor.red.cgColor
+        uiView.layer.borderWidth = 1
+        errorLabel.textColor = UIColor.red
+        errorLabel.text = errormessage
+        uiView.layer.cornerRadius = 4
+        errorLabel.isHidden = false
+        //bu asagıdakı kod placeholder rengını degıstırıyo
+        textfiled.attributedPlaceholder = NSAttributedString(
+             string: textfiled.placeholder ?? "",
+             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+         )
+        
+    
+}
+func ColorNotError(textfiled: UITextField , uiView: UIView! , errorLabel: UILabel, errormessage: String ) {
+    
+    errorLabel.isHidden = true
+    uiView.layer.borderColor = UIColor.systemGray4.cgColor
+    uiView.layer.cornerRadius = 4
+    uiView.layer.borderWidth = 1
+    //bu asagıdakı kod placeholder rengını degıstırıyo
+    textfiled.attributedPlaceholder = NSAttributedString(
+         string: textfiled.placeholder ?? "",
+         attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+     )
+    
 }
