@@ -9,7 +9,6 @@ class NewsViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
 
-    // Haber doğrulama isteğini OpenAI API'sine gönderen fonksiyon
     func validateNews(url: String) {
         guard let requestUrl = URL(string: "https://api.openai.com/v1/chat/completions") else { return }
         
@@ -18,7 +17,7 @@ class NewsViewModel: ObservableObject {
         
         var request = URLRequest(url: requestUrl)
         request.httpMethod = "POST"
-        request.setValue("Bearer sk-xxxx", forHTTPHeaderField: "Authorization") // Kendi API anahtarınızı ekleyin
+        request.setValue("Bearer sk-xxxx", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let parameters: [String: Any] = [

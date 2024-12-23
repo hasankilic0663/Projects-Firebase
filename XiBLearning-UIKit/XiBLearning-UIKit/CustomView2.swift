@@ -104,6 +104,6 @@ final class CustomView2: UIView {
                 )
            }
        }
-    
+   
 
 }
